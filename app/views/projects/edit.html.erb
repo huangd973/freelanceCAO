@@ -1,0 +1,56 @@
+<h1>Update a project</h1>
+
+<%= form_with model: @project, local: true do |form| %>
+
+<% if @project.errors.any? %>
+    <h2>
+        <%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:
+    </h2>
+    <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+    </ul>
+<% end %>
+
+<p>
+  <%= form.label :name %><br>
+  <%= form.text_field :name %>
+</p>
+
+<p>
+  <%= form.label :created_by %><br>
+  <%= form.text_field :created_by %>
+</p>
+
+<p>
+  <%= form.label :email %><br>
+  <%= form.text_field :email %>
+</p>
+
+<p>
+  <%= form.label :category %><br>
+  <%= form.text_field :category %>
+</p>
+
+<p>
+  <%= form.label :description %><br>
+  <%= form.text_area :description %>
+</p>
+
+<p>
+  <%= form.label :budget %><br>
+  <%= form.number_field :budget %>
+</p>
+
+<p>
+  <%= form.label :published_at %><br>
+  <%= form.date_field :published_at %>
+</p>
+
+
+
+<p>
+  <%= form.submit %>
+</p>
+<% end %>

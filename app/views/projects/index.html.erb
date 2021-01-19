@@ -1,0 +1,43 @@
+<h1>All the projects</h1>
+
+
+<table>
+  <tr>
+    <th>Project name</th>
+    <th>created by</th>
+    <th>Category</th>
+    <th>Budget</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.name %></td>
+      <td><%= project.created_by %></td>
+      <td><%= project.category %></td>
+      <td><%= project.budget %> euros</td>
+
+      <td>
+        <% if (user_signed_in? && current_user.id == project.user_id) || has_role?(:admin) %>
+          <%= link_to 'Show', project_path(project) %>
+        <% end %>
+      </td>
+
+      <td>
+        <% if (user_signed_in? && current_user.id == project.user_id) || has_role?(:admin) %>
+          <%= link_to 'Edit', edit_project_path(project) %>
+        <% end %>
+      </td>
+
+      <td>
+         <% if (user_signed_in? && current_user.id == project.user_id) || has_role?(:admin) %>
+          <%= button_to 'Delete', project_path(project), method: :delete, :onclick => "return confirm('Are you sure?')", :remote => true %>
+         <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<%= paginate @projects %>

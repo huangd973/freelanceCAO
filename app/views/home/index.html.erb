@@ -1,0 +1,11 @@
+<div class="jumbotron">
+    <div class="container">
+        <h1 class="display-4">Freelance Website</h1>
+        <p class="lead">Need full stack developer ?? Here we are !</p>
+    </div>
+</div>
+
+<% if user_signed_in? %>
+    <p>Project Deposit</p>
+    <%= link_to "Submit your project", home_new_path %>
+<% end %>
